@@ -1,0 +1,33 @@
+cabal-version:       >=1.10
+name:                haskell-performance
+version:             0.1.0.0
+license-file:        LICENSE
+author:              Samuel Schlesinger
+maintainer:          samuel@simspace.com
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+library
+  exposed-modules:     Benchmark
+  build-depends:       base >=4.14 && <4.15,
+                       stm >=2.1,
+                       hspec >=2.7.4,
+                       async >=2.0,
+                       criterion >=1.5,
+                       deepseq >=1.4,
+                       time >=1.8,
+                       text >=0.2,
+                       bytestring >=0.10,
+                       containers >=0.6,
+                       unordered-containers >=0.2
+  default-language:    Haskell2010
+
+benchmark haskell-performance-benchmark
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      bench
+  main-is:             Bench.hs
+  build-depends:       base >=4.12 && <4.16,
+                       haskell-performance
+  other-extensions:    PostfixOperators, TypeApplications, BlockArguments
+  ghc-options:         -threaded -rtsopts "-with-rtsopts=-N -T" -O2
+  default-language:    Haskell2010
