@@ -1,0 +1,6 @@
+packages: .
+
+source-repository-package
+  type: git
+  location: https://github.com/bergey/text-utf8
+  tag: 0c92a86bdb9b7decf69644e2f4885933b441586a
